@@ -128,13 +128,7 @@ public class HtmlController {
 		} else if (!"ALLOWALL".equals(X_FRAME_OPTIONS)) {
 			httpResponse.setHeader("X-Frame-Options", X_FRAME_OPTIONS);
 		}
-		try {
-			return new BufferedWriter(
-					new OutputStreamWriter(httpResponse.getOutputStream(), "UTF-8"));
-		} catch (final IllegalStateException e) {
-			// just in case, if httpResponse.getWriter() was already called (for an exception in PrometheusController for example)
-			return new BufferedWriter(httpResponse.getWriter());
-		}
+		return new BufferedWriter(new OutputStreamWriter(httpResponse.getOutputStream(), "UTF-8"));
 	}
 
 	@RequestPart(HttpPart.GRAPH)

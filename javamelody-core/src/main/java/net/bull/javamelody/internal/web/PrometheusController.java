@@ -185,11 +185,9 @@ class PrometheusController {
 		assert out != null;
 		// it doesn't make much sense to use a JavaMelody collector server with Prometheus
 		// (which is effectively it's own collector server)
-		// and at least not for several nodes in a single application
 		if (javaInformations.size() > 1) {
 			throw new IOException(
-					"Prometheus from collector server is not supported for several nodes in one application"
-							+ " - configure Prometheus to scrape nodes directly or declare several applications in the collector server.");
+					"JavaMelody collector server not supported - configure Prometheus to scrape nodes.");
 		}
 		this.javaInformations = javaInformations.get(0);
 		this.collector = collector;

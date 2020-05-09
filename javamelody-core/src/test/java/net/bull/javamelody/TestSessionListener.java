@@ -59,11 +59,7 @@ public class TestSessionListener {
 	}
 
 	private void clearSessions() {
-		final ServletContext servletContext = createNiceMock(ServletContext.class);
-		final ServletContextEvent servletContextEvent = new ServletContextEvent(servletContext);
-		replay(servletContext);
-		sessionListener.contextDestroyed(servletContextEvent);
-		verify(servletContext);
+		sessionListener.contextDestroyed(null);
 	}
 
 	/** Test. */
@@ -178,12 +174,8 @@ public class TestSessionListener {
 	/** Test. */
 	@Test
 	public void testContextDestroyed() {
-		final ServletContext servletContext = createNiceMock(ServletContext.class);
-		final ServletContextEvent servletContextEvent = new ServletContextEvent(servletContext);
-		replay(servletContext);
 		sessionListener.sessionCreated(createSessionEvent());
-		sessionListener.contextDestroyed(servletContextEvent);
-		verify(servletContext);
+		sessionListener.contextDestroyed(null);
 		if (!SessionListener.getAllSessionsInformations().isEmpty()) {
 			fail("contextDestroyed");
 		}

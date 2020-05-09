@@ -71,9 +71,9 @@ public final class LOG {
 		msg.append(' ').append(httpRequest.getMethod());
 		msg.append(": ").append(duration).append(" ms");
 		if (systemError) {
-			msg.append(", error");
+			msg.append(", erreur");
 		}
-		msg.append(", ").append(responseSize / 1024L).append(" Kb");
+		msg.append(", ").append(responseSize / 1024L).append(" Ko");
 		return msg.toString();
 	}
 

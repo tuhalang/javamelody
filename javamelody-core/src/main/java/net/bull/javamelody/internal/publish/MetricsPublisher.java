@@ -62,6 +62,8 @@ public abstract class MetricsPublisher {
 		final CloudWatch cloudWatch = CloudWatch.getInstance(contextPath, hosts);
 		final InfluxDB influxDb = InfluxDB.getInstance(contextPath, hosts);
 		final Datadog datadog = Datadog.getInstance(contextPath, hosts);
+		final Database database = Database.getInstance(contextPath, hosts);
+		final AlertOverThreshold alertOverThreshold = AlertOverThreshold.getInstance(contextPath, hosts);
 		if (graphite != null) {
 			metricsPublishers.add(graphite);
 		}
@@ -77,9 +79,16 @@ public abstract class MetricsPublisher {
 		if (datadog != null) {
 			metricsPublishers.add(datadog);
 		}
+		if(database != null){
+			metricsPublishers.add(database);
+		}
+		if(alertOverThreshold != null){
+			metricsPublishers.add(alertOverThreshold);
+		}
 		if (metricsPublishers.isEmpty()) {
 			return Collections.emptyList();
 		}
+
 		return metricsPublishers;
 	}
 

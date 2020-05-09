@@ -37,6 +37,7 @@ import net.bull.javamelody.internal.common.Parameters;
 import net.bull.javamelody.internal.model.Counter.CounterRequestContextComparator;
 import net.bull.javamelody.internal.model.SamplingProfiler.SampledMethod;
 import net.bull.javamelody.internal.publish.MetricsPublisher;
+import org.apache.log4j.Logger;
 
 /**
  * Collecteur de données sur les compteurs, avec son propre thread, pour remplir les courbes.
@@ -501,7 +502,7 @@ public class Collector { // NOPMD
 		otherJRobinsValues.put("systemLoad", systemLoadAverage);
 		otherJRobinsValues.put("systemCpuLoad", systemCpuLoad / javaInformationsList.size());
 		otherJRobinsValues.put("fileDescriptors", (double) unixOpenFileDescriptorCount);
-		for (final Map.Entry<String, Double> entry : otherJRobinsValues.entrySet()) {
+				for (final Map.Entry<String, Double> entry : otherJRobinsValues.entrySet()) {
 			if (entry.getValue() >= 0) {
 				addJRobinValue(getOtherJRobin(entry.getKey()), entry.getValue());
 			}

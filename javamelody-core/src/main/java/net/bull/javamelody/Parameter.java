@@ -26,6 +26,53 @@ import net.bull.javamelody.internal.common.Parameters;
  * @author Emeric Vernat
  */
 public enum Parameter {
+
+	/**
+	 * The path of file using set up threshold for properties
+	 */
+	PATH_FILE_THRESHOLD("path-file-threshold"),
+
+	/**
+	 * Determine whether to send alert
+	 */
+	ALERT_THRESHOLD("alert-threshold"),
+
+	/**
+	 * Message to send alert
+	 */
+	MESSAGE_ALERT("message-alert"),
+
+	/**
+	 * API to send sms
+	 */
+	SMS_API("sms-api"),
+
+	/**
+	 * Determine whether to write the database or not?
+	 * Value is 'true' or 'false'
+	 * */
+	WRITE_DATABASE("write-database"),
+
+	/**
+	 * Url to connect database
+	 * */
+	DATABASE_URL("db-url"),
+
+	/**
+	 * Username to connect database
+	 * */
+	DATABASE_USERNAME("db-username"),
+
+	/**
+	 * Password to connect database
+	 * */
+	DATABASE_PASSWORD("db-password"),
+
+	/**
+	 * Driver name of database
+	 */
+	DATABASE_DRIVER("db-driver"),
+
 	/**
 	 * Résolution des courbes en secondes (60 par défaut).
 	 * Une résolution entre 60 et 600 est recommandée (c'est-à-dire 1 à 10 minutes).
